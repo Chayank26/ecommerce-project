@@ -147,3 +147,7 @@
   width: 26px;
   text-align: center;
 }
+
+.orders-NavLink.active{
+  text-decoration: underline !important;
+}
