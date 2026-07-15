@@ -1,6 +1,7 @@
 import dayjs from "dayjs"
+import axios from "axios"
 
-export function DeliveryOptions({cartItem,deliveryOptions}) {
+export function DeliveryOptions({cartItem,deliveryOptions,loadCart}) {
     return (
 
         <div className="delivery-options">
@@ -13,11 +14,19 @@ export function DeliveryOptions({cartItem,deliveryOptions}) {
                 if (deliveryOption.priceCents > 0) {
                     priceString = `$${(deliveryOption.priceCents / 100).toFixed(2)} - Shipping`
                 }
+
+                const updateDeliveryOption=async ()=>{
+                    await axios.put(`/api/cart-items/${cartItem.productId}`,{
+                        deliveryOptionId:deliveryOption.id
+                    })
+                    await loadCart()
+                }
+
                 return (
-                    <div key={deliveryOption.id} className="delivery-option">
+                    <div key={deliveryOption.id} className="delivery-option" onClick={updateDeliveryOption}>
                         <input type="radio" checked={deliveryOption.id === cartItem.deliveryOptionid}
                             className="delivery-option-input"
-                            name={`delivery-option-${cartItem.productId}`} />
+                            name={`delivery-option-${cartItem.productId}`} onChange={()=>{}} />
                         <div>
                             <div className="delivery-option-date">
                                 {dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
