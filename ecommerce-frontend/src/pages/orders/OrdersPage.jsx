@@ -1,7 +1,7 @@
 import axios from 'axios'
 import dayjs from 'dayjs'
 import { useState, useEffect, Fragment } from 'react'
-import { Header } from '../components/header'
+import { Header } from '../../components/header'
 import './OrdersPage.css'
 
 export function OrdersPage({ cart }) {
