@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router'
+import { useSearchParams } from 'react-router';
 import './header.css'
 
 export function Header({ cart }) {
+
     let totalQuantity = 0;
     cart.forEach((cartItem) => {
         totalQuantity += cartItem.quantity;
@@ -18,7 +20,9 @@ export function Header({ cart }) {
             </div>
 
             <div className="middle-section">
-                <input className="search-bar" type="text" placeholder="Search" />
+                <input className="search-bar" type="text" placeholder="Search" onChange={(event)=>{
+                    console.log(event.target.value)
+                }} />
                 <button className="search-button">
                     <img className="search-icon" src="images/icons/search-icon.png" alt="Search" />
                 </button>
