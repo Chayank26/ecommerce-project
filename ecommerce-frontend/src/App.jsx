@@ -10,14 +10,14 @@ import './App.css'
 
 function App() {
 
-  const [cart,setCart]=useState([])
+  const [cart,setCart]=useState([]) //cart is intialized as an empty array
   const loadCart=async ()=>{
-    const response=await axios.get('/api/cart-items?expand=product')
-    setCart(response.data)
+    const response=await axios.get('/api/cart-items?expand=product') //gets the cart from the backend
+    setCart(response.data) //empty cart variable is assigned to the cart obtained from backend
     
   }
   useEffect(()=>{
-    loadCart()
+    loadCart() //calls the loadcart function once when the App function initially mounts on the DOM
   },[])
 
   return (

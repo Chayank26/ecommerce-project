@@ -10,7 +10,7 @@ export function HomePage({ cart,loadCart }) {
     useEffect(() => {
         const getHomeData=async ()=>{
             const response=await axios.get('/api/products')
-            setProducts(response.data)
+            setProducts(response.data) //gets all the products to be displayed on the home page from the backend
         }
         getHomeData()
     }, [])

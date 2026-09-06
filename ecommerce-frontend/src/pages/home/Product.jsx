@@ -7,16 +7,16 @@ export function Product({ product, loadCart }) {
     const [isAdded, setIsAdded] = useState(false)
 
     const addToCart = async () => {
-        await axios.post('/api/cart-items', {
+        await axios.post('/api/cart-items', { //adds a new item to the cart
             productId: product.id,
             quantity: quantity
         })
-        await loadCart()
+        await loadCart() //imediately re renders the cart after adding a new item in the cart so that the updated cart is visible on home page
     }
 
     const selectQuantity = (event) => {
         const quantitySelected = Number(event.target.value)
-        setQuantity(quantitySelected)
+        setQuantity(quantitySelected) //updates the quantity selected to the qty selected from the dropdown
     }
 
     // 2. Fixed: Normal helper function to manage the "Added" timing state
